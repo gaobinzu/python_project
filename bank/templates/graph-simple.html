@@ -1,0 +1,162 @@
+{% extends 'index.html' %}
+{% block main %}
+    <body style="height: 50%; margin: 0px;">
+    <nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/user/index" class="maincolor">首页</a>
+        <span class="c-999 en">&gt;</span>
+        <a href="/project_management/project" class="maincolor"><span class="c-666">我的项目</span></a>
+        <span class="c-999 en">&gt;</span>
+        <a href="#" class="maincolor"><span class="c-666">项目流程示意图</span></a>
+
+        <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+           href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+
+    <div id="container" style="height: 90%;width:100%;"></div>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<!-- 图表开始  -->
+
+    <script type="text/javascript">
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+
+            title: {
+                text: '项目流程示意图'
+            },
+            tooltip: {},
+            animationDurationUpdate: 1500,
+            animationEasingUpdate: 'quinticInOut',
+            series: [
+                {
+                    type: 'graph',
+                    layout: 'none',
+                    symbolSize: 80,
+                    roam: true,
+                    label: {
+                        normal: {
+                            show: true,
+
+                        }
+                    },
+                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbolSize: [4, 10],
+                    edgeLabel: {
+                        normal: {
+                            textStyle: {
+                                fontSize: 20
+                            }
+                        }
+                    },
+                    data: [{
+                        name: '分析1',
+                        x: 100,
+                        y: 80,
+
+                    }, {
+                        name: '设计1',
+                        x: 300,
+                        y: 90
+                    }, {
+                        name: '实现1',
+                        x: 500,
+                        y: 100
+                    }, {
+                        name: '分析2',
+                        x: 100,
+                        y: 300
+                    }, {
+                        name: '设计2',
+                        x: 300,
+                        y: 300
+                    }, {
+                        name: '实现2',
+                        x: 500,
+                        y: 300
+                    }, {
+                        name: 'SIT',
+                        x: 700,
+                        y: 300
+                    }, {
+                        name: 'UAT',
+                        x: 900,
+                        y: 300
+                    }, {
+                        name: '验证',
+                        x: 1100,
+                        y: 300
+                    }, {
+                        name: '上线',
+                        x: 1300,
+                        y: 300
+                    }, {
+                        name: '分析3',
+                        x: 100,
+                        y: 520
+                    }, {
+                        name: '设计3',
+                        x: 300,
+                        y: 510
+                    }, {
+                        name: '实现3',
+                        x: 500,
+                        y: 500
+                    }
+                    ],
+                    // links: [],
+                    links: [
+                        {
+                            source: '分析2',
+                            target: '设计2'
+                        }, {
+                            source: '设计2',
+                            target: '实现2'
+                        }, {
+                            source: '实现2',
+                            target: 'SIT'
+                        }, {
+                            source: 'SIT',
+                            target: 'UAT'
+                        }, {
+                            source: 'UAT',
+                            target: '验证'
+                        }, {
+                            source: '验证',
+                            target: '上线'
+                        }, {
+                            source: '分析1',
+                            target: '设计1'
+                        }, {
+                            source: '设计1',
+                            target: '实现1'
+                        }, {
+                            source: '分析3',
+                            target: '设计3'
+                        }, {
+                            source: '设计3',
+                            target: '实现3'
+                        }, {
+                            source: '实现1',
+                            target: 'SIT'
+                        }, {
+                            source: '实现3',
+                            target: 'SIT'
+                        }],
+                    lineStyle: {
+                        normal: {
+                            opacity: 0.9,
+                            width: 5,
+                            curveness: 0.1
+                        }
+                    }
+                }
+            ]
+        };
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    </script>
+    <!-- 图表结束  -->
+
+    </body>
+{% endblock main %}

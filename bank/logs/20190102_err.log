@@ -1,0 +1,334 @@
+[2019-01-02 11:02:19,990][Thread-138:11072][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/project/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\bank\project_management\views.py", line 15, in get
+    id = User.objects.filter(username=username).first().id
+AttributeError: 'NoneType' object has no attribute 'id'
+[2019-01-02 11:02:20,136][Thread-138:11072][task_id:django.server][basehttp.py:124][ERROR]["GET /project_management/project/ HTTP/1.1" 500 76184]
+[2019-01-02 11:05:20,548][Thread-203:11424][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/add_project_stage/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\bank\project_management\views.py", line 236, in post
+    projects.save()
+  File "C:\Python\lib\site-packages\django\db\models\base.py", line 729, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Python\lib\site-packages\django\db\models\base.py", line 759, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Python\lib\site-packages\django\db\models\base.py", line 842, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Python\lib\site-packages\django\db\models\base.py", line 880, in _do_insert
+    using=using, raw=raw)
+  File "C:\Python\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 1125, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1279, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1232, in as_sql
+    for obj in self.query.objs
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1232, in <listcomp>
+    for obj in self.query.objs
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1231, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1171, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 767, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 1276, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 1271, in get_prep_value
+    return self.to_python(value)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 1246, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ['’‘ 必须为合法的日期格式，请使用 YYYY-MM-DD 格式。']
+[2019-01-02 11:05:20,801][Thread-203:11424][task_id:django.server][basehttp.py:124][ERROR]["POST /project_management/add_project_stage/ HTTP/1.1" 500 152502]
+[2019-01-02 11:06:24,131][Thread-208:12508][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/add_project_stage/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\bank\project_management\views.py", line 236, in post
+    projects.save()
+  File "C:\Python\lib\site-packages\django\db\models\base.py", line 729, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Python\lib\site-packages\django\db\models\base.py", line 759, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Python\lib\site-packages\django\db\models\base.py", line 842, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Python\lib\site-packages\django\db\models\base.py", line 880, in _do_insert
+    using=using, raw=raw)
+  File "C:\Python\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 1125, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1279, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1232, in as_sql
+    for obj in self.query.objs
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1232, in <listcomp>
+    for obj in self.query.objs
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1231, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "C:\Python\lib\site-packages\django\db\models\sql\compiler.py", line 1171, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 767, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 1276, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 1271, in get_prep_value
+    return self.to_python(value)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 1246, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ['’‘ 必须为合法的日期格式，请使用 YYYY-MM-DD 格式。']
+[2019-01-02 11:06:24,222][Thread-208:12508][task_id:django.server][basehttp.py:124][ERROR]["POST /project_management/add_project_stage/ HTTP/1.1" 500 152953]
+[2019-01-02 15:26:52,102][Thread-1:10336][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/project/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\contrib\auth\decorators.py", line 20, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'Project_View' object has no attribute 'user'
+[2019-01-02 15:26:52,634][Thread-1:10336][task_id:django.server][basehttp.py:124][ERROR]["GET /project_management/project/ HTTP/1.1" 500 78307]
+[2019-01-02 16:07:53,556][Thread-11:5152][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/edit_project/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: as_view() takes 1 positional argument but 2 were given
+[2019-01-02 16:07:53,948][Thread-11:5152][task_id:django.server][basehttp.py:124][ERROR]["GET /project_management/edit_project/ HTTP/1.1" 500 64366]
+[2019-01-02 16:09:14,472][Thread-14:13404][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/edit_project/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: as_view() takes 1 positional argument but 2 were given
+[2019-01-02 16:09:14,556][Thread-14:13404][task_id:django.server][basehttp.py:124][ERROR]["GET /project_management/edit_project/ HTTP/1.1" 500 64366]
+[2019-01-02 16:09:17,284][Thread-15:8208][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/edit_project/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: as_view() takes 1 positional argument but 2 were given
+[2019-01-02 16:09:17,367][Thread-15:8208][task_id:django.server][basehttp.py:124][ERROR]["GET /project_management/edit_project/ HTTP/1.1" 500 64366]
+[2019-01-02 16:22:02,204][Thread-4:6464][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/edit_project/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\bank\project_management\views.py", line 163, in get
+    p_num = request.GEt.get('p_num')
+AttributeError: 'WSGIRequest' object has no attribute 'GEt'
+[2019-01-02 16:22:02,586][Thread-4:6464][task_id:django.server][basehttp.py:124][ERROR]["GET /project_management/edit_project/?id=1&p_num=0001&p_name=%E9%A1%B9%E7%9B%AE%E4%B8%80&start_time=2018%E5%B9%B41%E6%9C%881%E6%97%A5&stop_time=2018%E5%B9%B44%E6%9C%881%E6%97%A5 HTTP/1.1" 500 79757]
+[2019-01-02 17:12:27,674][Thread-36:8720][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/edit_project_stage/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\bank\project_management\views.py", line 206, in post
+    Mul = Project.objects.get(id=pro_id)  # 获取外键信息
+  File "C:\Python\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 394, in get
+    clone = self.filter(*args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1252, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    split_subq=split_subq,
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1214, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1084, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Python\lib\site-packages\django\db\models\lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Python\lib\site-packages\django\db\models\lookups.py", line 68, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+[2019-01-02 17:12:27,943][Thread-36:8720][task_id:django.server][basehttp.py:124][ERROR]["POST /project_management/edit_project_stage/ HTTP/1.1" 500 129883]
+[2019-01-02 17:22:35,192][Thread-3:8248][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/edit_project_stage/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\bank\project_management\views.py", line 205, in post
+    Mul = Project.objects.get(id=pro_id)  # 获取外键信息
+  File "C:\Python\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 394, in get
+    clone = self.filter(*args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1252, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    split_subq=split_subq,
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1214, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1084, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Python\lib\site-packages\django\db\models\lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Python\lib\site-packages\django\db\models\lookups.py", line 68, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+[2019-01-02 17:22:35,549][Thread-3:8248][task_id:django.server][basehttp.py:124][ERROR]["POST /project_management/edit_project_stage/ HTTP/1.1" 500 129886]
+[2019-01-02 17:25:01,591][Thread-10:10096][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/edit_project_stage/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\bank\project_management\views.py", line 203, in post
+    p_name = Project.objects.filter(id=pro_id).first().p_name # 项目名称
+  File "C:\Python\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1252, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    split_subq=split_subq,
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1214, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1084, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Python\lib\site-packages\django\db\models\lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Python\lib\site-packages\django\db\models\lookups.py", line 68, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+[2019-01-02 17:25:01,982][Thread-10:10096][task_id:django.server][basehttp.py:124][ERROR]["POST /project_management/edit_project_stage/ HTTP/1.1" 500 126116]
+[2019-01-02 17:28:47,242][Thread-7:9448][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/edit_project_stage/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\bank\project_management\views.py", line 204, in post
+    p_name = Project.objects.filter(id=pro_id).first().p_name # 项目名称
+  File "C:\Python\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 836, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\db\models\query.py", line 854, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1252, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    split_subq=split_subq,
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1214, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Python\lib\site-packages\django\db\models\sql\query.py", line 1084, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Python\lib\site-packages\django\db\models\lookups.py", line 18, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Python\lib\site-packages\django\db\models\lookups.py", line 68, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "C:\Python\lib\site-packages\django\db\models\fields\__init__.py", line 947, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+[2019-01-02 17:28:47,601][Thread-7:9448][task_id:django.server][basehttp.py:124][ERROR]["POST /project_management/edit_project_stage/ HTTP/1.1" 500 126151]
+[2019-01-02 17:33:24,690][Thread-12:5524][task_id:django.request][exception.py:118][ERROR][Internal Server Error: /project_management/edit_project_stage/]
+Traceback (most recent call last):
+  File "C:\Python\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python\bank\project_management\views.py", line 204, in post
+    p_name = Project.objects.filter(id=pro_id).first().p_name # 项目名称
+AttributeError: 'NoneType' object has no attribute 'p_name'
+[2019-01-02 17:33:24,740][Thread-12:5524][task_id:django.server][basehttp.py:124][ERROR]["POST /project_management/edit_project_stage/ HTTP/1.1" 500 79910]

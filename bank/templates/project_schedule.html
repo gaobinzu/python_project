@@ -1,0 +1,129 @@
+{% extends 'index.html' %}
+{% block main %}
+    <body style="height: 50%; margin: 0px;">
+    <nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/user/index" class="maincolor">首页</a>
+        <span class="c-999 en">&gt;</span>
+        <a href="/project_management/project" class="maincolor"><span class="c-666">我的项目</span></a>
+        <span class="c-999 en">&gt;</span>
+        <a href="/project_management/project" class="maincolor"><span class="c-666">项目详情</span></a>
+
+        <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+           href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+
+    <div id="container" style="height: 90%;width:100%;"></div>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+
+    <script type="text/javascript">
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        console.log({{ name_list|safe }});
+        console.log({{ jg_list }});
+        var app = {};
+            option = null;
+        option = {
+            title: {
+                text: '计划进度图',
+
+                sublink: 'http://e.weibo.com/1341556070/Aj1J2x5a5'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+
+            },
+            legend: {
+                data: ['计划','实际']
+            },
+            grid: {
+                left: '5%',
+                right: '6%',
+                bottom: '6%',
+                containLabel: true
+            },
+            yAxis: {
+                type: 'category',
+                splitLine: {show: true},
+                name: '项目阶段',
+                data: {{ name_list | safe }}
+            },
+            xAxis: {
+                type: 'value',
+                data: ['天数'],
+                name:'days',
+                max: {{ max_day }}
+            },
+            series: [
+                {
+                    name: '辅助',
+                    type: 'bar',
+                    stack: '计划',
+                    itemStyle: {
+                        normal: {
+                            barBorderColor: 'rgba(0,0,0,0)',
+                            color: 'rgba(0,0,0,0)'
+                        },
+                        emphasis: {
+                            barBorderColor: 'rgba(0,0,0,0)',
+                            color: 'rgba(0.5,0.2,0.3,0)'
+                        }
+                    },
+
+                    data: {{ jg_list_jh }}
+                },{
+                    name: '辅助',
+                    type: 'bar',
+                    stack: '实际',
+                    itemStyle: {
+                        normal: {
+                            barBorderColor: 'rgba(0,0,0,0)',
+                            color: 'rgba(0,0,0,0)'
+                        },
+                        emphasis: {
+                            barBorderColor: 'rgba(0,0,0,0)',
+                            color: 'rgba(0.5,0.2,0.3,0)'
+                        }
+                    },
+
+                    data: {{ jg_list }}
+                },
+                {
+                    name: '计划',
+                    type: 'bar',
+                    stack: '计划',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: ''
+                        }
+                    },
+                    data: {{ daylist_jh }}
+                },
+                {
+                    name: '实际',
+                    type: 'bar',
+                    stack: '实际',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: ''
+                        }
+                    },
+                    data: {{ daylist }}
+                },
+
+
+            ]
+
+
+        };
+
+
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        console.log(option)
+    </script>
+    </body>
+{% endblock main %}

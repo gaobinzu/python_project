@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+{% block main %}
+    <nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/user/index" class="maincolor">首页</a>
+        <span class="c-999 en">&gt;</span>
+        <a href=""><span class="c-666">我的项目</span></a>
+        <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+           href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+
+    <div class="Hui-article">
+        <article class="cl pd-20">
+            <table class="table table-border table-bordered table-bg">
+                <thead>
+                <tr>
+                    <th scope="col" colspan="9">版本信息</th>
+                </tr>
+                <tr class="text-c">
+
+                    <th width="50">工具名称</th>
+                    <th width="150">存储位置</th>
+                    <th width="90">版本号</th>
+                    <th width="130">使用时间</th>
+                    <th width="50">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-c">
+                    <td>{{ names.0 }}</td>
+                    <td>{{ paths.0 }}</td>
+                    <td>{{ version.0 }}</td>
+                    <td>2018-12-12</td>
+                    <td class="td-manage">
+                        <a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','admin-add.html','1','800','500')"
+                           class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i>
+                        </a> <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                </tr>
+                <tr class="text-c">
+                    <td>{{ names.1 }}</td>
+                    <td>{{ paths.1 }}</td>
+                    <td>{{ version.1 }}</td>
+                    <td>2018-12-12</td>
+
+                    <td class="td-manage">
+                        <a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','admin-add.html','1','800','500')"
+                           class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i>
+                        </a> <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+
+                </tr>
+                <tr class="text-c">
+                    <td>{{ names.2 }}</td>
+                    <td>{{ paths.2 }}</td>
+                    <td>{{ version.2 }}</td>
+                    <td>2018-12-12</td>
+
+                    <td class="td-manage">
+                        <a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','admin-add.html','1','800','500')"
+                           class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i>
+                        </a> <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </article>
+    </div>
+    <script type="text/javascript">
+        /*
+            参数解释：
+            title	标题
+            url		请求的url
+            id		需要操作的数据id
+            w		弹出层宽度（缺省调默认值）
+            h		弹出层高度（缺省调默认值）
+        */
+        /*管理员-增加*/
+        function admin_add(title, url, w, h) {
+            layer_show(title, url, w, h);
+        }
+
+        /*管理员-删除*/
+        function admin_del(obj, id) {
+            layer.confirm('确认要删除吗？', function (index) {
+                //此处请求后台程序，下方是成功后的前台处理……
+
+                $(obj).parents("tr").remove();
+                layer.msg('已删除!', {icon: 1, time: 1000});
+            });
+        }
+
+        /*管理员-编辑*/
+        function admin_edit(title, url, id, w, h) {
+            layer_show(title, url, w, h);
+        }
+
+        /*管理员-停用*/
+        function admin_stop(obj, id) {
+            layer.confirm('确认要停用吗？', function (index) {
+                //此处请求后台程序，下方是成功后的前台处理……
+
+                $(obj).parents("tr").find(".td-manage").prepend('<a onClick="admin_start(this,id)" href="javascript:;" title="启用" style="text-decoration:none"><i class="Hui-iconfont">&#xe615;</i></a>');
+                $(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">已禁用</span>');
+                $(obj).remove();
+                layer.msg('已停用!', {icon: 5, time: 1000});
+            });
+        }
+
+        /*管理员-启用*/
+        function admin_start(obj, id) {
+            layer.confirm('确认要启用吗？', function (index) {
+                //此处请求后台程序，下方是成功后的前台处理……
+
+                $(obj).parents("tr").find(".td-manage").prepend('<a onClick="admin_stop(this,id)" href="javascript:;" title="停用" style="text-decoration:none"><i class="Hui-iconfont">&#xe631;</i></a>');
+                $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+                $(obj).remove();
+                layer.msg('已启用!', {icon: 6, time: 1000});
+            });
+        }
+    </script>
+{% endblock main %}

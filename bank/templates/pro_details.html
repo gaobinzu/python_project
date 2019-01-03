@@ -1,0 +1,103 @@
+{% extends 'index.html' %}
+{% block main %}
+    <nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/user/index" class="maincolor">首页</a>
+        <span class="c-999 en">&gt;</span>
+        <a href="/project_management/project" class="maincolor"><span class="c-666">我的项目</span></a>
+        <span class="c-999 en">&gt;</span>
+
+        <a href="#" class="maincolor"><span class="c-666">项目详情</span></a>
+
+        <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+           href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+
+
+    <div class="Hui-article">
+
+
+        <article class="cl pd-20">
+         <span><a href="javascript:;"
+                     onclick="project_add('添加新项目阶段','/project_management/add_project_stage?id={{ id }}','800','550')"
+                     class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加新项目阶段</a> </span>
+
+            <a href="/project_management/pro_schedule?id={{ id }}" class="btn btn-primary radius"><i
+                    class="Hui-iconfont">&#xe720;</i> 图表进度显示</a>
+
+           <p></p>
+            <table class="table table-border table-bordered table-bg">
+                <thead>
+                <tr>
+                    <th colspan="6" scope="col">项目阶段详情</th>
+                </tr>
+                <tr class="text-c">
+                    <th>项目阶段</th>
+                    <th>计划开始时间</th>
+                    <th>计划结束时间</th>
+                    <th>实际开始时间</th>
+                    <th>实际结束时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for pro in project_dateils %}
+                    <tr id="{{ pro.id }}" class="text-c">
+                        <td>{{ pro.pro_name }}</td>
+                        <td>{{ pro.pro_start_time_jh }}</td>
+                        <td>{{ pro.pro_stop_time_jh }}</td>
+                        <td>{{ pro.pro_start_time }}</td>
+                        <td>{{ pro.pro_stop_time }}</td>
+                        <td>
+                            <!--
+                            <button onclick="del_pro_stage(this,'{{ pro.id }}','{{ username }}')"
+                                    class="btn btn-danger radius"><i
+                                    class="Hui-iconfont">&#xe6e2;</i> 删除
+                            </button>
+                            -->
+                             <a title="编辑" href="javascript:;" onclick="project_edit('项目阶段编辑','/project_management/edit_project_stage?id={{ id }}','2','800','500')"
+                           class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+
+                            <a title="删除" href="javascript:;" onclick="del_pro_stage(this,'{{ pro.id }}','{{ username }}')" class="ml-5"
+                           style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </article>
+
+    </div>
+
+    <script>
+        /*项目阶段-编辑*/
+        function project_edit(title, url, id, w, h) {
+            layer_show(title, url, w, h);
+        }
+        /*项目阶段-增加*/
+        function project_add(title, url, w, h) {
+            layer_show(title, url, w, h);
+        }
+        /*项目阶段-删除*/
+
+        function del_pro_stage(obj, id, username) {
+            layer.confirm('确认要删除吗？', function (index) {
+                    //此处请求后台程序，下方是成功后的前台处理……
+
+                    $.get(
+                        '/project_management/del_project_dateils/',
+                        {"id": id, "username": username},
+                        function (data) {
+                            console.log($(obj).parent("tr"));
+                            $(obj).parents("tr").remove();
+                        },
+                        'json'
+                    );
+                    layer.msg('已删除!', {icon: 1, time: 1000});
+                }
+            );
+        }
+
+    </script>
+
+{% endblock main %}
+

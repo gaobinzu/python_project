@@ -1,0 +1,125 @@
+{% extends 'index.html' %}
+{% block main %}
+    <nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/user/index" class="maincolor">首页</a>
+        <span class="c-999 en">&gt;</span>
+        <a href=""><span class="c-666">我的项目</span></a>
+        <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+           href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+
+    <div class="Hui-article">
+        <article class="cl pd-20">
+         <div >
+
+                <a href="javascript:;" onclick="project_add('添加新项目','/project_management/add_project','800','500')"
+                   class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加新项目</a> </span>
+
+
+                <a href="/project_management/graph_simple" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe720;</i>
+                    项目流程图</a> </span>
+
+
+        </div>
+            <div class="mt-20">
+
+            <table class="table table-border table-bordered table-bg table-sort">
+                <thead>
+                <tr>
+                    <th colspan="7" scope="col">我的项目</th>
+                </tr>
+                <tr class="text-c">
+                    <th>项目编号</th>
+                    <th>项目名称</th>
+                    <th>项目开始时间</th>
+                    <th>项目结束时间</th>
+                    <th>详情</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for pro in projects %}
+                    <tr id="{{ pro.id }}" class="text-c">
+                        <td>{{ pro.p_num }}</td>
+                        <td>{{ pro.p_name }}</td>
+                        <td>{{ pro.p_start_time }}</td>
+                        <td>{{ pro.p_stop_time }}</td>
+                        <td><a href="/project_management/pro_details/?id={{ pro.id }}" class="btn btn-primary radius"><i
+                                class="Hui-iconfont">&#xe725;</i> 查看</a></td>
+                        <td>
+                            <!--
+                            <button onclick="del_pro(this, '{{ pro.id }}','{{ username }}')"
+                                    class="btn btn-danger radius"><i
+                                    class="Hui-iconfont">&#xe6e2;</i> 删除
+                            </button>
+                            -->
+                            <a title="编辑" href="javascript:;" onclick="project_edit('项目编辑','/project_management/edit_project?id={{ pro.id }}&p_num={{ pro.p_num }}&p_name={{ pro.p_name }}&start_time={{ pro.p_start_time }}&stop_time={{ pro.p_stop_time }}','{{ pro.id }}','800','500')"
+                           class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                            <a title="删除" href="javascript:;" onclick="del_pro(this,'{{ pro.id }}','{{ username }}')" class="ml-5"
+                           style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+            </div>
+
+        </article>
+
+    </div>
+    <script>
+        /*项目-编辑*/
+        function project_edit(title, url, id, w, h) {
+            layer_show(title, url, w, h);
+        }
+        
+        /*项目-删除*/
+        function del_pro(obj, id, username) {
+            console.log(id, 'id001');
+            layer.confirm('确定删除', function (index) {
+                    console.log(id, 'id002');
+                    $.get(
+                        '/project_management/del_project/',
+                        {
+                            'id': id,
+                            'username': username,
+
+                        },
+                        function (data) {
+                            $(obj).parents("tr").remove();
+                        },
+                        'json'
+                    );
+                    layer.msg('已删除!', {icon: 1, time: 1000});
+                }
+            );
+
+
+        }
+        
+        /*项目-增加*/
+        function project_add(title, url, w, h) {
+
+            layer_show(title, url, w, h);
+
+        }
+
+    </script>
+    <script type="text/javascript">
+            /*项目-分页控制*/
+        $.fn.dataTable.ext.errMode = 'none';
+        $('.table-sort').dataTable({
+            "destroy":true,
+            "lengthMenu": true,//显示数量选择
+            "bFilter": true,//过滤功能
+            "bPaginate": true,//翻页信息
+            "bInfo": true,//数量信息
+            "aaSorting": [[1, "desc"]],//默认第几个排序
+            "bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable": true, "aTargets": [0, 5]}// 制定列不参与排序
+            ]
+        });
+    </script>
+{% endblock main %}
+
